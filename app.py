@@ -1312,11 +1312,7 @@ def main():
             atletas_time = []
             capitao_id = None
 
-            if 'time' in user_team and 'atletas' in user_team['time']:
-                atletas_time = list(user_team['time']['atletas'].values())
-                capitao_id = user_team['time'].get('capitao_id')
-            elif 'atletas' in user_team:
-                 atletas_time = []
+            atletas_time = []
 capitao_id = None
 
 if 'time' in user_team:
@@ -1345,9 +1341,6 @@ elif 'atletas' in user_team:
         atletas_time = []
 
     capitao_id = user_team.get('capitao_id')
-                capitao_id = user_team.get('capitao_id')
-
-            if not atletas_time:
                 st.warning("⚠️ Nenhum atleta encontrado no seu time")
             else:
                 analisador = AnalisadorTime(mercado, partidas)
