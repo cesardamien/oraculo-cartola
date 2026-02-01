@@ -1316,7 +1316,35 @@ def main():
                 atletas_time = list(user_team['time']['atletas'].values())
                 capitao_id = user_team['time'].get('capitao_id')
             elif 'atletas' in user_team:
-                atletas_time = list(user_team['atletas'].values())
+                 atletas_time = []
+capitao_id = None
+
+if 'time' in user_team:
+    time_data = user_team['time']
+
+    if 'atletas' in time_data:
+        atletas_obj = time_data['atletas']
+
+        if isinstance(atletas_obj, dict):
+            atletas_time = list(atletas_obj.values())
+        elif isinstance(atletas_obj, list):
+            atletas_time = atletas_obj
+        else:
+            atletas_time = []
+
+    capitao_id = time_data.get('capitao_id')
+
+elif 'atletas' in user_team:
+    atletas_obj = user_team['atletas']
+
+    if isinstance(atletas_obj, dict):
+        atletas_time = list(atletas_obj.values())
+    elif isinstance(atletas_obj, list):
+        atletas_time = atletas_obj
+    else:
+        atletas_time = []
+
+    capitao_id = user_team.get('capitao_id')
                 capitao_id = user_team.get('capitao_id')
 
             if not atletas_time:
